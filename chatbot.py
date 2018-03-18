@@ -17,7 +17,7 @@ bot_deleting = False
 @app.event
 async def on_ready():
     print(app.user.name, "(%s)" % app.user.id)
-    await app.change_presence(game=discord.Game(name="Afreeca 밤비TV", type=0))
+    await app.change_presence(game=discord.Game(name="BOT_NAME", type=0))
 
 
 # 메세지
@@ -33,11 +33,11 @@ async def on_message(message):
 
     # 안내
     if "!유튜브" == message.content:
-        await app.send_message(message.channel, "https://www.youtube.com/channel/UCSIdQo4-_eWYaiksJp18vQA")  # 비동기 프로그래밍
-    if "!방송국" == message.content:
-        await app.send_message(message.channel, "http://afreecatv.com/snowdrop1223")  # 비동기 프로그래밍
-    if "!카페" == message.content:
-        await app.send_message(message.channel, "http://cafe.naver.com/bambiittv")  # 비동기 프로그래밍
+        await app.send_message(message.channel, "https://www.youtube.com")  # 비동기 프로그래밍
+    if "!구글" == message.content:
+        await app.send_message(message.channel, "http://google.co.kr")  # 비동기 프로그래밍
+    if "!블로그" == message.content:
+        await app.send_message(message.channel, "http://blog.naver.com/chad76")  # 비동기 프로그래밍
 
     # Google 이미지 보내기
     if "!검색" == message.content.split(" ")[0]:
@@ -87,7 +87,7 @@ async def on_message_delete(message):
     if bot_deleting: return
     if message.author.id == app.user.id: return
 
-    msg = await app.send_message(message.channel, "<@%s> 왜 지우고 그래,,, 내가 이미 다 봤거든,," % message.author.id)
+    msg = await app.send_message(message.channel, "<@%s> 이미지가 삭제되었습니다" % message.author.id)
     await asyncio.sleep(5)  # --> 메세지를 기다리면서 5초간 멈춤 // time.sleep(5) --> 아무것도 안하면서 5초간 멈춤
     await app.delete_message(msg)
     del msg
@@ -96,7 +96,7 @@ async def on_message_delete(message):
 # 새로운 멤버가 입장했을 때
 @app.event
 async def on_member_join(member):
-    await app.send_message(app.get_channel("379288158954586113"), "반갑다우, <@%s> 동무!" % member.id)
+    await app.send_message(app.get_channel("379288158954586113"), "안녕하세요, <@%s>!" % member.id)
 
 
 # 봇 실행
